@@ -7,10 +7,10 @@ $(function(){
     var del = confirm('Are you sure you want to delete this note?');
     if(del){
       $.ajax({
-        url: '/note/'+noteId
+        url: '/note/'+noteId,
         method: 'DELETE',
         success: function(data){
-
+          $('tr[data-note-id="'+noteId+'"]').remove();
         },
         error: function(data){
 
@@ -21,7 +21,7 @@ $(function(){
   function getNotes(){
     $.get('/notes', function(data){
       for(var i = 0; i < data.length; i++){
-        var tRow = $('<tr>');
+        var tRow = $('<tr>').attr('data-note-id', data[i].id);
         tRow.append(
           $('<td>').text(data[i].id),
           $('<td>').text(data[i].note_text),
@@ -37,7 +37,7 @@ $(function(){
     }
     function createNote(note){
       $.post('/notes', note, function(data){
-        var tRow = $('<tr>');
+        var tRow = $('<tr>').attr('data-note-id', data.id);
         tRow.append(
           $('<td>').text(data.id),
           $('<td>').text(data.note_text),

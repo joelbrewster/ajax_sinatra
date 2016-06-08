@@ -8,7 +8,6 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Note < ActiveRecord::Base
-
 end
 
 # NOTES

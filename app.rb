@@ -2,6 +2,10 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'active_record'
 
+ActiveRecord::Base.establish_connection(
+  adapter: 'postgresql'
+)
+
 # NOTES
 # GET /notes
 # POST /notes

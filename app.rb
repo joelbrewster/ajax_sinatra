@@ -7,6 +7,10 @@ ActiveRecord::Base.establish_connection(
   database: 'notes_development'
 )
 
+class Note < ActiveRecord::Base
+
+end
+
 # NOTES
 # GET /notes
 # POST /notes

@@ -1,4 +1,11 @@
 $(function(){
+  $('form').on('submit', function(e){
+    e.preventDefault();
+  });
+  $('#cancel-edit').on('click', function(event){
+    $('#edit').hide();
+    event.preventDefault();
+  });
   function editNote(){
     var noteId = $(this).data('note-id');
     var noteRow = $('tr[data-note-id="'+noteId+'"]');
@@ -6,6 +13,7 @@ $(function(){
     var noteCategory = noteRow.find('td:eq(2)').text();
     $('#edit input:eq(0)').attr('value', noteText);
     $('#edit input:eq(1)').attr('value', noteCategory);
+    $('#edit').show();
   }
   function deleteNote(){
     var noteId = $(this).data('note-id');
@@ -54,7 +62,7 @@ $(function(){
     }
     getNotes();
 
-    $('form').on("submit", function(event){
+    $('form:first-of-type').on("submit", function(event){
       var noteData = $(this).serialize();
       createNote(noteData);
       event.preventDefault();

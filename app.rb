@@ -8,6 +8,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 class Note < ActiveRecord::Base
+
 end
 
 # NOTES
@@ -30,6 +31,9 @@ get '/notes' do
 end
 
 post '/notes' do
+  #receive params with text & category
+  note = Note.create(params)
+  return note.to_json
 
 end
 

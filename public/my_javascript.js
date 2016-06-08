@@ -12,6 +12,6 @@ $(function(){
   getNotes();
 
   $('form')>on("submit", function(event){
-
+    event.preventDefault();
   });
 });

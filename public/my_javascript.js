@@ -13,7 +13,8 @@ $(function(){
       method: 'PATCH',
       success: function(data){
         $('tr[data-note-id="'+noteId+'"] td:eq(1)').text(data.note_text);
-        $('tr[data-note-id="'+noteId+'"] td:eq(2)').text(data.note_Category);
+        $('tr[data-note-id="'+noteId+'"] td:eq(2)').text(data.note_category);
+        $('#edit').hide();
       }
     });
   });

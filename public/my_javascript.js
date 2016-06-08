@@ -8,6 +8,13 @@ $(function(){
     if(del){
       $.ajax({
         url: '/note/'+noteId
+        method: 'DELETE',
+        success: function(data){
+
+        },
+        error: function(data){
+
+        }
       });
     }
   }

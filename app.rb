@@ -44,6 +44,8 @@ patch '/note/:id' do
 end
 
 delete '/note/:id' do
-
+  Note.find(params[:id]).destroy
+  # Note.destroy(params[:id])
+  204
 end
 

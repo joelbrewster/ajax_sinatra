@@ -5,12 +5,15 @@ $(function(){
 
   $('#save-note').on('click', function(){
     var formData = $('#edit').serialize();
+    var noteId = $('#edit').attr('data-note-id');
+
     $.ajax({
       url: '/note/' + $('#edit').attr('data-note-id'),
       data: formData,
       method: 'PATCH',
       success: function(data){
-        console.log("Success!")
+        $('tr[data-note-id="'+noteId+'"] td:eq(1)').text(data.note_text);
+        $('tr[data-note-id="'+noteId+'"] td:eq(2)').text(data.note_Category);
       }
     });
   });

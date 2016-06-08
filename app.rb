@@ -40,10 +40,11 @@ post '/notes' do
 end
 
 patch '/note/:id' do
+  content_type :json
   note = Note.find(params[:id])
   note.update(:note_text => params[:note_text])
   note.update(:note_category => params[:note_category])
-  204
+  return note.to_json
 end
 
 delete '/note/:id' do

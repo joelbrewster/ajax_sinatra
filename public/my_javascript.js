@@ -1,6 +1,11 @@
 $(function(){
   function editNote(){
-    console.log($(this).data('note-id'));
+    var noteId = $(this).data('note-id');
+    var noteRow = $('tr[data-note-id="'+noteId+'"]');
+    var noteText = noteRow.find('td:eq(1)').text();
+    var noteCategory = noteRow.find('td:eq(2)').text();
+    $('#edit input:eq(0)').attr('value', noteText);
+    $('#edit input:eq(1)').attr('value', noteCategory);
   }
   function deleteNote(){
     var noteId = $(this).data('note-id');

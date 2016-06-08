@@ -40,7 +40,10 @@ post '/notes' do
 end
 
 patch '/note/:id' do
-
+  note = Note.find(params[:id])
+  note.update(:note_text => params[:note_text])
+  note.update(:note_category => params[:note_category])
+  204
 end
 
 delete '/note/:id' do

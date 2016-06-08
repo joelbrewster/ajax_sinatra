@@ -2,17 +2,32 @@ $(function(){
   $('form').on('submit', function(e){
     e.preventDefault();
   });
+
+  $('#save-note').on('click', function(){
+    var formData = $('#edit').serialize();
+    $.ajax({
+      url: '/note/' + $('#edit').attr('data-note-id'),
+      data: formData,
+      method: 'PATCH',
+      success: function(data){
+        console.log("Success!")
+      }
+    });
+  });
+
   $('#cancel-edit').on('click', function(event){
     $('#edit').hide();
     event.preventDefault();
   });
   function editNote(){
     var noteId = $(this).data('note-id');
+
     var noteRow = $('tr[data-note-id="'+noteId+'"]');
     var noteText = noteRow.find('td:eq(1)').text();
     var noteCategory = noteRow.find('td:eq(2)').text();
     $('#edit input:eq(0)').attr('value', noteText);
     $('#edit input:eq(1)').attr('value', noteCategory);
+    $('#edit').attr('data-note-id', noteId);
     $('#edit').show();
   }
   function deleteNote(){

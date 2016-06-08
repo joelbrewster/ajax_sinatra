@@ -7,15 +7,24 @@ $(function(){
           $('<td>').text(data[i].id),
           $('<td>').text(data[i].note_text),
           $('<td>').text(data[i].note_category),
-          $('<td>').text('ACTIONS')
-          );
+          $('<td>').append(
+            $('<button>').text('Edit'),
+            $('<button>').text('Delete')
+            )
+        );
         $('#notes').append(tRow);
       }
     });
   }
   function createNote(note){
     $.post('/notes', note, function(data){
-      var noteDiv = $('<div>').addClass('note').text(data.note_text);
+      var tRow = $('<tr>');
+      tRow.append(
+        $('<td>').text(data.id),
+        $('<td>').text(data.note_text),
+        $('<td>').text(data.note_category),
+        $('<td>').text('ACTIONS')
+      );
       $('#notes').append(tRow);
     });
   }

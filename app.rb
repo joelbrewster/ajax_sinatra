@@ -26,12 +26,14 @@ get '/' do
 end
 
 get '/notes' do
+  content_type :json
   @notes = Note.all
   return @notes.to_json
 end
 
 post '/notes' do
   #receive params with text & category
+  content_type :json
   note = Note.create(params)
   return note.to_json
 

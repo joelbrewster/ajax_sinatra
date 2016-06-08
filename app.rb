@@ -3,7 +3,8 @@ require 'sinatra/reloader'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(
-  adapter: 'postgresql'
+  adapter: 'postgresql',
+  database: 'notes_development'
 )
 
 # NOTES

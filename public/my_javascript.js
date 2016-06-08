@@ -14,6 +14,7 @@ $(function(){
       success: function(data){
         $('tr[data-note-id="'+noteId+'"] td:eq(1)').text(data.note_text);
         $('tr[data-note-id="'+noteId+'"] td:eq(2)').text(data.note_category);
+        $('#edit').trigger('reset');
         $('#edit').hide();
       }
     });
@@ -74,7 +75,10 @@ $(function(){
           $('<td>').text(data.id),
           $('<td>').text(data.note_text),
           $('<td>').text(data.note_category),
-          $('<td>').text('ACTIONS')
+          $('<td>').append(
+            $('<button>').data('note-id', data.id).text('Edit').on('click', editNote),
+            $('<button>').data('note-id', data.id).text('Delete').on('click', deleteNote)
+            )
         );
         $('#notes').append(tRow);
       });

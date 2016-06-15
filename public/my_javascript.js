@@ -80,15 +80,15 @@ $(function(){
             $('<button>').data('note-id', data.id).text('Edit').on('click', editNote),
             $('<button>').data('note-id', data.id).text('Delete').on('click', deleteNote)
             )
-        );
-        $('#notes').append(tRow);
-      });
-    }
-    getNotes();
+          );
+          $('#notes').append(tRow);
+        });
+      }
+      getNotes();
 
-    $('form:first-of-type').on("submit", function(event){
-      var noteData = $(this).serialize();
-      createNote(noteData);
-      event.preventDefault();
+      $('form:first-of-type').on("submit", function(event){
+        var noteData = $(this).serialize();
+        createNote(noteData);
+        event.preventDefault();
+      });
     });
-  });
